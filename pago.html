@@ -23,10 +23,11 @@
   .support{background:var(--dark);color:#fff;padding:18px;border-radius:18px;max-width:380px;margin:0 auto;text-align:center;box-shadow:0 8px 20px rgba(0,0,0,0.2);}
   .support h3 {margin-bottom:8px;}
   .support p {font-size:14px;margin-bottom:10px;}
-  footer{position:fixed;bottom:10px;left:50%;transform:translateX(-50%);background:var(--dark);border-radius:30px;display:flex;justify-content:space-around;align-items:center;width:92%;max-width:420px;padding:10px;box-shadow:0 10px 25px rgba(0,0,0,0.2);}
+  footer{position:fixed;bottom:10px;left:50%;transform:translateX(-50%);background:var(--dark);border-radius:30px;display:flex;justify-content:space-around;align-items:center;width:92%;max-width:420px;padding:10px 14px;box-shadow:0 8px 20px rgba(0,0,0,0.2);z-index:50;}
   footer a{color:var(--grad-end);font-size:22px;text-decoration:none;}
   footer a.active {color:#fff;}
   .plus-btn {width:60px;height:60px;border-radius:50%;background:#fff;color:var(--dark);border:none;font-size:26px;transform:translateY(-20px);box-shadow:0 6px 18px rgba(0,0,0,0.2);cursor:pointer;}
+  #openChat, #openChat i {vertical-align:middle;}
 </style>
 </head>
 <body>
@@ -48,7 +49,6 @@
     <h2>Detalle de Pago</h2>
     <div class="payment-details">
       <p><strong>Comercio:</strong> Tienda ABC</p>
-      <p
       <p><strong>Monto:</strong> S/ <span id="amount">0.00</span></p>
       <p><strong>ID Transacción:</strong> <span id="transactionId">-</span></p>
     </div>
@@ -75,25 +75,33 @@
 </footer>
 
 <script>
-  // Botón chat
-  document.getElementById('openChat').addEventListener('click', () => {
-    alert('Conectando con un asesor del BancoFintech...');
-  });
+  // Manejo seguro de botones (comprueba que existan)
+  const openChatBtn = document.getElementById('openChat');
+  if (openChatBtn) {
+    openChatBtn.addEventListener('click', () => {
+      alert('Conectando con un asesor del BancoFintech...');
+    });
+  }
 
   // Leer parámetros de URL
   const urlParams = new URLSearchParams(window.location.search);
   const transactionId = urlParams.get('id') || '000000';
   const amount = urlParams.get('monto') || '0.00';
 
-  // Mostrar datos en la página
-  document.getElementById('transactionId').textContent = transactionId;
-  document.getElementById('amount').textContent = amount;
+  // Mostrar datos en la página (solo si existen los elementos)
+  const txElem = document.getElementById('transactionId');
+  const amtElem = document.getElementById('amount');
+  if (txElem) txElem.textContent = transactionId;
+  if (amtElem) amtElem.textContent = amount;
 
   // Botón de pago simulado
-  document.getElementById('payButton').addEventListener('click', () => {
-    alert(`Pago realizado con éxito.\nID Transacción: ${transactionId}\nMonto: S/ ${amount}\nGracias por usar BancoFintech.`);
-    window.location = 'home.html'; // Redirige a inicio después del pago
-  });
+  const payBtn = document.getElementById('payButton');
+  if (payBtn) {
+    payBtn.addEventListener('click', () => {
+      alert(`Pago realizado con éxito.\nID Transacción: ${transactionId}\nMonto: S/ ${amount}\nGracias por usar BancoFintech.`);
+      window.location = 'home.html';
+    });
+  }
 </script>
 </body>
 </html>
