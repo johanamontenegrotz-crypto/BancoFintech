@@ -6,9 +6,12 @@
 <title>BancoFintech · QR</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-  body {font-family: 'Poppins', sans-serif; display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:100vh; background:#00a88f;}
+  body {font-family:'Poppins', sans-serif; display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:100vh; background:#00a88f; margin:0;}
   h2 {color:#fff; margin-bottom:20px;}
   #qrcode {padding:20px; background:#fff; border-radius:20px; box-shadow:0 8px 20px rgba(0,0,0,0.2);}
+  footer{position:fixed;bottom:10px;left:50%;transform:translateX(-50%);background:#13313a;border-radius:30px;display:flex;justify-content:space-around;align-items:center;width:92%;max-width:420px;padding:10px;box-shadow:0 10px 25px rgba(0,0,0,0.2);}
+  footer a, .plus-btn{color:#ffea00; font-size:22px; text-decoration:none;}
+  .plus-btn {width:60px;height:60px;border-radius:50%;background:#fff;color:#13313a;border:none;font-size:26px;transform:translateY(-20px);box-shadow:0 6px 18px rgba(0,0,0,0.2);cursor:pointer;}
 </style>
 </head>
 <body>
@@ -16,9 +19,17 @@
 <h2>Escanea para pagar</h2>
 <div id="qrcode"></div>
 
+<footer>
+  <a href="home.html"><i class="fa-solid fa-house"></i></a>
+  <a href="chat.html"><i class="fa-solid fa-comment-dots"></i></a>
+  <button class="plus-btn" onclick="window.location='mas.html'"><i class="fa-solid fa-plus"></i></button>
+  <a href="qr.html"><i class="fa-solid fa-qrcode"></i></a>
+  <a href="configuracion.html"><i class="fa-solid fa-gear"></i></a>
+</footer>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
-  // Aquí defines la URL de pago (puedes cambiar los parámetros dinámicamente si quieres)
+  // URL de pago que solo se abre al escanear el QR
   const paymentUrl = "pago.html?id=123456&monto=50.00";
 
   new QRCode(document.getElementById("qrcode"), {
