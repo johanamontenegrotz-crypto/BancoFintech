@@ -32,10 +32,9 @@
     }
 
     .logo-img {
-      width: 80px;
-      height: 80px;
+      width: 170px;
+      height: 170px;
       object-fit: contain;
-      border-radius: 16px;
       margin-bottom: 10px;
     }
 
@@ -100,11 +99,10 @@
 <body>
 
 <div class="card">
-  <img src="img/Recurso 5@4x.png" alt="Logo BancoFintech" 
-       class="logo-img" 
-       style="width:170px; height:170px; object-fit:contain; margin-bottom:0px;">
+  <img src="img/Recurso 5@4x.png" alt="Logo BancoFintech" class="logo-img">
   
-  <form class="form" action="home.html" method="post">
+  <!-- FORMULARIO CORREGIDO -->
+  <form class="form" action="home.html" method="get">
     <input type="text" placeholder="Usuario" required>
     <input type="password" placeholder="Contraseña" required>
     <button class="btn btn-primary" type="submit">Iniciar Sesión</button>
@@ -112,7 +110,6 @@
 
   <p class="small-note">¿No tienes cuenta? <a href="register.html">Regístrate aquí</a></p>
 </div>
-
 
 </body>
 </html>
