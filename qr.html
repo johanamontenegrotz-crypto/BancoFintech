@@ -72,18 +72,20 @@
 
 <script>
   // Botón chat
-  document.getElementById('openChat').addEventListener('click',()=>{alert('Conectando con un asesor del BancoFintech...');});
+  document.getElementById('openChat').addEventListener('click',()=>{
+    alert('Conectando con un asesor del BancoFintech...');
+  });
 
-  // QR funcional
+  // QR funcional apuntando a pago.html
   const qrCanvas = document.getElementById('qrCanvas');
-const qr = new QRious({
-    element: document.getElementById('qrCanvas'),
-    value: 'https://TU_USUARIO.github.io/NOMBRE_DEL_REPOSITORIO/pago.html?id=872934&monto=150',
-    size: 200,
-    background: 'white',
-    foreground: '#13313a'
-});
-
+  const qr = new QRious({
+      element: qrCanvas,
+      value: 'pago.html?id=872934&monto=150', // <-- Aquí va el QR que lleva a pago.html
+      size: 200,
+      background: 'white',
+      foreground: '#13313a'
+  });
 </script>
+
 </body>
 </html>
