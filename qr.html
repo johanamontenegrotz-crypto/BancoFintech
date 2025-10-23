@@ -76,13 +76,14 @@
 
   // QR funcional
   const qrCanvas = document.getElementById('qrCanvas');
-  const qr = new QRious({
-    element: qrCanvas,
-    value: 'https://midominio.com/pago.html?id=872934&monto=150', // <--- URL completa
+const qr = new QRious({
+    element: document.getElementById('qrCanvas'),
+    value: 'https://TU_USUARIO.github.io/NOMBRE_DEL_REPOSITORIO/pago.html?id=872934&monto=150',
     size: 200,
     background: 'white',
     foreground: '#13313a'
-  });
+});
+
 </script>
 </body>
 </html>
