@@ -33,7 +33,7 @@
 <div class="app-container">
   <header>
     <div class="header-left">
-      <img src="img/Recurso 3@4x.png" alt="BancoFintech" class="logo">
+      <img src="img/4x/Recurso 3@4x.png" alt="BancoFintech" class="logo">
       <div class="user-data">
         <h3>Pagar con QR</h3>
         <p>BancoFintech Seguro</p>
@@ -74,7 +74,7 @@
 </footer>
 
 <script>
-  // Botón de chat (seguro)
+  // Manejo seguro de botones (evita errores si elemento no existe)
   const openChatBtn = document.getElementById('openChat');
   if (openChatBtn) {
     openChatBtn.addEventListener('click', () => {
@@ -82,18 +82,18 @@
     });
   }
 
-  // Leer parámetros desde la URL
+  // Leer parámetros de URL
   const urlParams = new URLSearchParams(window.location.search);
   const transactionId = urlParams.get('id') || '000000';
   const amount = urlParams.get('monto') || '0.00';
 
-  // Mostrar los valores en pantalla
+  // Mostrar datos en la página (comprobando elementos)
   const txElem = document.getElementById('transactionId');
   const amtElem = document.getElementById('amount');
   if (txElem) txElem.textContent = transactionId;
   if (amtElem) amtElem.textContent = amount;
 
-  // Botón de pago simulado
+  // Botón de pago simulado (con comprobación)
   const payBtn = document.getElementById('payButton');
   if (payBtn) {
     payBtn.addEventListener('click', () => {
