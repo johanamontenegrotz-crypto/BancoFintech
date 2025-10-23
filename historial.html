@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BancoFintech · Historial</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap" rel="stylesheet">
+
+  <style>
+  :root {
+    --grad-start: #00a88f;
+    --grad-end: #ffea00;
+    --dark: #13313a;
+    --card: rgba(255,255,255,0.95);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;font-family:"Poppins",sans-serif;}
+  html,body{height:100%;background: linear-gradient(to bottom right, #00a88f, #ffea00);background-attachment: fixed;}
+
+  .app-container {max-width:420px;margin:auto;position:relative;padding-bottom:100px;min-height:100vh;}
+
+  /* HEADER */
+  header {
+    background:#ffea00;
+    color:var(--dark);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:14px 18px;
+    border-radius:0 0 22px 22px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.15);
+  }
+
+  .header-left {display:flex;align-items:center;gap:10px;cursor:pointer;}
+  .logo {width:60px;height:60px;object-fit:contain;}
+  .user-data h3{font-size:17px;margin-bottom:2px;font-weight:700;}
+  .user-data p{font-size:14px;opacity:0.8;}
+  .header-right {display:flex;gap:14px;}
+  .header-right a {color:var(--dark);font-size:22px;text-decoration:none;}
+
+  /* HISTORIAL */
+  .history-list{
+    margin:20px auto;
+    max-width:380px;
+    background:#fff;
+    border-radius:16px;
+    box-shadow:0 8px 18px rgba(0,0,0,0.1);
+    padding:10px;
+  }
+  .history-item{
+    display:flex;
+    flex-direction:column;
+    background:var(--card);
+    padding:12px 14px;
+    border-radius:12px;
+    margin-bottom:10px;
+    font-size:14px;
+    color:var(--dark);
+    box-shadow:0 3px 6px rgba(0,0,0,0.1);
+  }
+  .history-item strong{color:var(--dark);font-weight:700;}
+  .history-item span{font-size:13px;opacity:0.8;}
+  .history-item .amount{font-weight:600;color:var(--grad-end);}
+
+  /* FOOTER */
+  footer {
+    position:fixed;
+    bottom:10px;
+    left:50%;
+    transform:translateX(-50%);
+    background:var(--dark);
+    border-radius:30px;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    width:92%;
+    max-width:420px;
+    padding:10px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+  }
+  footer a {color:var(--grad-end);font-size:22px;text-decoration:none;}
+  footer a.active {color:#fff;}
+  .plus-btn {
+    width:60px;height:60px;border-radius:50%;
+    background:#fff;color:var(--dark);
+    border:none;font-size:26px;
+    transform:translateY(-20px);
+    box-shadow:0 6px 18px rgba(0,0,0,0.2);
+    cursor:pointer;
+  }
+  </style>
+</head>
+
+<body>
+<div class="app-container">
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-left" onclick="window.location='home.html'">
+      <img src="img/4x/Recurso 3@4x.png" alt="BancoFintech" class="logo">
+      <div class="user-data">
+        <h3>Historial</h3>
+        <p>BancoFintech</p>
+      </div>
+    </div>
+    <div class="header-right">
+      <a href="noti.html"><i class="fa-solid fa-bell"></i></a>
+      <a href="perfil.html"><i class="fa-solid fa-user-circle"></i></a>
+    </div>
+  </header>
+
+  <!-- LISTA DE MOVIMIENTOS -->
+  <div class="history-list" id="historyList">
+    <div class="history-item"><strong>Depósito recibido</strong><span class="amount">S/ +1,000.00</span><span>De Cliente A</span></div>
+    <div class="history-item"><strong>Pago de luz</strong><span class="amount">S/ -150.00</span><span>Enel</span></div>
+    <div class="history-item"><strong>Transferencia enviada</strong><span class="amount">S/ -300.00</span><span>A Pedro</span></div>
+    <div class="history-item"><strong>Pago de préstamo</strong><span class="amount">S/ -450.00</span><span>BancoFintech</span></div>
+    <div class="history-item"><strong>Compra con tarjeta virtual</strong><span class="amount">S/ -120.00</span><span>Mercado XYZ</span></div>
+    <div class="history-item"><strong>Pago recibido</strong><span class="amount">S/ +500.00</span><span>De Luisa</span></div>
+    <div class="history-item"><strong>Depósito bancario</strong><span class="amount">S/ +1,200.00</span><span>Cuenta de Ahorro</span></div>
+    <div class="history-item"><strong>Compra online</strong><span class="amount">S/ -80.00</span><span>Plataforma E-Commerce</span></div>
+    <div class="history-item"><strong>Préstamo recibido</strong><span class="amount">S/ +2,000.00</span><span>BancoFintech</span></div>
+    <div class="history-item"><strong>Pago de servicios</strong><span class="amount">S/ -130.00</span><span>Agua y Luz</span></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <a href="home.html"><i class="fa-solid fa-house"></i></a>
+  <a href="chat.html"><i class="fa-solid fa-comment-dots"></i></a>
+  <button id="plusBtn" class="plus-btn" onclick="window.location='mas.html'"><i class="fa-solid fa-plus"></i></button>
+  <a href="qr.html"><i class="fa-solid fa-qrcode"></i></a>
+  <a href="configuracion.html"><i class="fa-solid fa-gear"></i></a>
+</footer>
+
+</body>
+</html>
