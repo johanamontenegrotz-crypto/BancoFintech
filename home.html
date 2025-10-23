@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BancoFintech · Home</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap" rel="stylesheet">
+
+  <style>
+  :root {
+    --grad-start: #00a88f;
+    --grad-end: #ffea00;
+    --dark: #13313a;
+    --card: rgba(255,255,255,0.95);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;font-family:"Poppins",sans-serif;}
+  html,body{
+    height:100%;
+    background: linear-gradient(to bottom right, #00a88f, #ffea00);
+    background-attachment: fixed;
+  }
+
+  .app-container {
+    max-width:420px;
+    margin:auto;
+    position:relative;
+    padding-bottom:100px;
+    min-height:100vh;
+  }
+
+  /* HEADER */
+  header {
+    background:#ffea00;
+    color:var(--dark);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:14px 18px;
+    border-radius:0 0 22px 22px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.15);
+    position:relative;
+  }
+
+  .header-left {
+    display:flex;
+    align-items:center;
+    gap:10px;
+    cursor:pointer;
+  }
+  .logo {width:60px;height:60px;object-fit:contain;}
+  .user-data h3{font-size:17px;margin-bottom:2px;font-weight:700;}
+  .user-data p{font-size:14px;opacity:0.8;}
+  .header-right {display:flex; gap:14px;}
+  .header-right a { color:var(--dark); font-size:22px; text-decoration:none; }
+
+  /* FEATURE BAR */
+  .feature-bar {
+    display:flex;
+    justify-content:space-around;
+    margin:14px auto;
+    padding:12px 8px;
+    background:#fff;
+    border-radius:14px;
+    max-width:380px;
+    box-shadow:0 8px 15px rgba(0,0,0,0.1);
+  }
+  .feature {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:4px;
+    font-size:13px;
+    cursor:pointer;
+  }
+  .feature i{
+    background:var(--grad-end);
+    color:var(--dark);
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:18px;
+  }
+  .feature a{text-decoration:none;color:var(--dark);display:flex;flex-direction:column;align-items:center;gap:4px;}
+
+  /* SALDO PANEL */
+  .saldo-panel {
+    background:var(--dark);
+    color:var(--grad-end);
+    border-radius:20px;
+    margin:14px auto;
+    padding:20px 16px;
+    max-width:380px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 6px 14px rgba(0,0,0,0.15);
+  }
+  .saldo-left strong{font-size:18px;}
+  .saldo-right{display:flex;align-items:center;gap:10px;font-size:17px;}
+  .toggle-eye{cursor:pointer;color:#fff;font-size:18px;}
+
+  /* LISTA DE TRANSFERENCIAS */
+  .transfer-scroll{
+    margin:20px auto;
+    max-width:380px;
+    background:#fff;
+    border-radius:16px;
+    box-shadow:0 8px 18px rgba(0,0,0,0.1);
+    padding:10px;
+  }
+  .transfer-item{
+    display:flex;
+    flex-direction:column;
+    background:var(--card);
+    padding:10px 14px;
+    border-radius:12px;
+    margin-bottom:10px;
+    font-size:14px;
+    color:var(--dark);
+    box-shadow:0 3px 6px rgba(0,0,0,0.1);
+  }
+  .transfer-item strong{color:var(--dark);font-weight:700;}
+  .transfer-item span{font-size:13px;opacity:0.8;}
+
+  /* FOOTER */
+  footer {
+    position:fixed;
+    bottom:10px;
+    left:50%;
+    transform:translateX(-50%);
+    background:var(--dark);
+    border-radius:30px;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    width:92%;
+    max-width:420px;
+    padding:10px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+  }
+  footer a { color:var(--grad-end); font-size:22px; text-decoration:none; }
+  footer a.active {color:#fff;}
+  .plus-btn {
+    width:60px;height:60px;border-radius:50%;
+    background:#fff;color:var(--dark);
+    border:none;font-size:26px;
+    transform:translateY(-20px);
+    box-shadow:0 6px 18px rgba(0,0,0,0.2);
+    cursor:pointer;
+  }
+
+  .modal{position:fixed;inset:0;background:rgba(0,0,0,0.35);display:flex;align-items:flex-end;justify-content:center;padding:16px;}
+  .hidden{display:none;}
+  .modal-content{background:#fff;width:100%;max-width:420px;border-radius:14px;padding:18px;position:relative;}
+  .modal-actions{display:flex;gap:10px;margin-top:10px;flex-direction:column;}
+  .modal-close{position:absolute;right:8px;top:8px;border:none;background:transparent;font-size:18px;color:#888;}
+  </style>
+</head>
+
+<body>
+<div class="app-container">
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-left" onclick="window.location='perfil.html'">
+      <img src="img/4x/Recurso 3@4x.png" alt="BancoFintech" class="logo">
+      <div class="user-data">
+        <h3>Hola, Luana</h3>
+        <p>ID: 872934</p>
+      </div>
+    </div>
+    <div class="header-right">
+      <a href="noti.html"><i class="fa-solid fa-bell"></i></a>
+      <a href="perfil.html"><i class="fa-solid fa-user-circle"></i></a>
+    </div>
+  </header>
+
+  <!-- FEATURE BAR -->
+  <section class="feature-bar">
+    <div class="feature">
+      <a href="transfer.html"><i class="fa-solid fa-exchange-alt"></i><span>Transferencias</span></a>
+    </div>
+    <div class="feature">
+      <a href="compras.html"><i class="fa-solid fa-shopping-cart"></i><span>Compras</span></a>
+    </div>
+    <div class="feature">
+      <a href="historial.html"><i class="fa-solid fa-history"></i><span>Historial</span></a>
+    </div>
+  </section>
+
+  <!-- SALDO -->
+  <section class="saldo-panel">
+    <div class="saldo-left">
+      <strong>Saldo disponible</strong>
+    </div>
+    <div class="saldo-right">
+      <span id="saldo">S/ 19,202.00</span>
+      <i id="eyeBtn" class="fa-solid fa-eye toggle-eye"></i>
+    </div>
+  </section>
+
+  <!-- TRANSFERENCIAS -->
+  <div class="transfer-scroll" id="transferList">
+    <!-- 20 transacciones -->
+    <div class="transfer-item"><strong>Pago recibido</strong><span>S/ +450.00 · Juan</span></div>
+    <div class="transfer-item"><strong>Pago de luz</strong><span>S/ -150.00 · Enel</span></div>
+    <div class="transfer-item"><strong>Netflix</strong><span>S/ -34.90 · Suscripción</span></div>
+    <div class="transfer-item"><strong>Depósito bancario</strong><span>S/ +1,000.00</span></div>
+    <div class="transfer-item"><strong>Farmacia</strong><span>S/ -80.00 · Botica</span></div>
+    <div class="transfer-item"><strong>Restaurante</strong><span>S/ -120.00 · Almuerzo</span></div>
+    <div class="transfer-item"><strong>Transferencia enviada</strong><span>S/ -300.00 · Pedro</span></div>
+    <div class="transfer-item"><strong>Spotify</strong><span>S/ -18.90</span></div>
+    <div class="transfer-item"><strong>Pago recibido</strong><span>S/ +500.00 · Luisa</span></div>
+    <div class="transfer-item"><strong>Uber</strong><span>S/ -25.00</span></div>
+    <div class="transfer-item"><strong>Gimnasio</strong><span>S/ -90.00</span></div>
+    <div class="transfer-item"><strong>Pago recibido</strong><span>S/ +350.00 · María</span></div>
+    <div class="transfer-item"><strong>Rappi</strong><span>S/ -45.00</span></div>
+    <div class="transfer-item"><strong>Cine</strong><span>S/ -70.00</span></div>
+    <div class="transfer-item"><strong>Pago recibido</strong><span>S/ +250.00 · José</span></div>
+    <div class="transfer-item"><strong>Supermercado</strong><span>S/ -240.00</span></div>
+    <div class="transfer-item"><strong>Pago recibido</strong><span>S/ +1,200.00 · Cliente</span></div>
+    <div class="transfer-item"><strong>Servicios</strong><span>S/ -130.00 · Agua</span></div>
+    <div class="transfer-item"><strong>Pago recibido</strong><span>S/ +300.00 · Rosa</span></div>
+    <div class="transfer-item"><strong>Comida rápida</strong><span>S/ -60.00</span></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <a href="home.html" class="active"><i class="fa-solid fa-house"></i></a>
+  <a href="chat.html"><i class="fa-solid fa-comment-dots"></i></a>
+  <button id="plusBtn" class="plus-btn" onclick="window.location='mas.html'"><i class="fa-solid fa-plus"></i></button>
+  <a href="qr.html"><i class="fa-solid fa-qrcode"></i></a>
+  <a href="configuracion.html"><i class="fa-solid fa-gear"></i></a>
+</footer>
+
+<!-- MODAL -->
+<div id="plusModal" class="modal hidden">
+  <div class="modal-content">
+    <h3>Crear movimiento</h3>
+    <div class="modal-actions">
+      <button class="btn btn-primary" onclick="window.location='mas.html'"><i class="fa-solid fa-exchange-alt"></i> Nueva Transferencia</button>
+      <button class="btn btn-secondary" onclick="alert('Depósito nuevo')"><i class="fa-solid fa-plus-circle"></i> Nuevo Depósito</button>
+    </div>
+    <button class="modal-close" id="closeModal"><i class="fa-solid fa-times"></i></button>
+  </div>
+</div>
+
+<script>
+const saldo = document.getElementById('saldo');
+const eye = document.getElementById('eyeBtn');
+let hidden = false;
+
+eye.addEventListener('click', ()=>{
+  hidden = !hidden;
+  if(hidden){
+    saldo.textContent = '••••••';
+    eye.classList.replace('fa-eye','fa-eye-slash');
+  } else {
+    saldo.textContent = 'S/ 19,202.00';
+    eye.classList.replace('fa-eye-slash','fa-eye');
+  }
+});
+
+const plusBtn = document.getElementById('plusBtn');
+const plusModal = document.getElementById('plusModal');
+const closeModal = document.getElementById('closeModal');
+
+plusBtn.addEventListener('click',()=>plusModal.classList.remove('hidden'));
+closeModal.addEventListener('click',()=>plusModal.classList.add('hidden'));
+document.addEventListener('click',e=>{
+  if(e.target===plusModal) plusModal.classList.add('hidden');
+});
+</script>
+</body>
+</html>
