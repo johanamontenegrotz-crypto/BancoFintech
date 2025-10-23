@@ -32,21 +32,11 @@
     }
 
     .logo-img {
-      width: 80px;
-      height: 80px;
+      width: 170px;
+      height: 170px;
       object-fit: contain;
       border-radius: 16px;
-      margin-bottom: 10px;
-    }
-
-    h2.brand {
-      font-size: 22px;
-      font-weight: 700;
-      margin-bottom: 20px;
-      color: var(--dark);
-    }
-    h2.brand span {
-      font-weight: 300;
+      margin-bottom: 0px;
     }
 
     .form input {
@@ -100,19 +90,25 @@
 <body>
 
 <div class="card">
-  <img src="img/4x/Recurso 5@4x.png" alt="Logo BancoFintech" 
-       class="logo-img" 
-       style="width:170px; height:170px; object-fit:contain; margin-bottom:0px;">
+  <img src="img/Recurso 5@4x.png" alt="Logo BancoFintech" class="logo-img">
 
-    <form class="form" action="login.html" method="post">
-      <input type="text" placeholder="Nombre completo" required>
-      <input type="email" placeholder="Correo electrónico" required>
-      <input type="password" placeholder="Contraseña" required>
-      <button class="btn btn-primary" type="submit">Registrarse</button>
-    </form>
+  <form class="form" id="registerForm">
+    <input type="text" placeholder="Usuario o Nombre completo" required>
+    <input type="email" placeholder="Correo o Email" required>
+    <input type="password" placeholder="Contraseña" required>
+    <button class="btn btn-primary" type="submit">Registrarse</button>
+  </form>
 
-    <p class="small-note">¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a></p>
-  </div>
+  <p class="small-note">¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a></p>
+</div>
+
+<script>
+  document.getElementById('registerForm').addEventListener('submit', function(e) {
+    e.preventDefault(); // evita buscar login.html
+    // Redirige automáticamente a home.html
+    window.location.href = 'home.html';
+  });
+</script>
 
 </body>
 </html>
