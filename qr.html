@@ -1,43 +1,74 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>BancoFintech · QR</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap" rel="stylesheet">
 <style>
-  body {font-family:'Poppins', sans-serif; display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:100vh; background:#00a88f; margin:0;}
-  h2 {color:#fff; margin-bottom:20px;}
-  #qrcode {padding:20px; background:#fff; border-radius:20px; box-shadow:0 8px 20px rgba(0,0,0,0.2);}
-  footer{position:fixed;bottom:10px;left:50%;transform:translateX(-50%);background:#13313a;border-radius:30px;display:flex;justify-content:space-around;align-items:center;width:92%;max-width:420px;padding:10px;box-shadow:0 10px 25px rgba(0,0,0,0.2);}
-  footer a, .plus-btn{color:#ffea00; font-size:22px; text-decoration:none;}
-  .plus-btn {width:60px;height:60px;border-radius:50%;background:#fff;color:#13313a;border:none;font-size:26px;transform:translateY(-20px);box-shadow:0 6px 18px rgba(0,0,0,0.2);cursor:pointer;}
+  :root {--grad-start:#00a88f;--grad-end:#ffea00;--dark:#13313a;}
+  *{margin:0;padding:0;box-sizing:border-box;font-family:"Poppins",sans-serif;}
+  html,body{height:100%;background: linear-gradient(to bottom right, #00a88f, #ffea00);}
+  .app-container{max-width:420px;margin:auto;padding-bottom:100px;min-height:100vh;position:relative;}
+  header{background:#ffea00;color:var(--dark);display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-radius:0 0 22px 22px;box-shadow:0 8px 25px rgba(0,0,0,0.15);}
+  .header-left{display:flex;align-items:center;gap:10px;}
+  .logo{width:60px;height:60px;object-fit:contain;}
+  .user-data h3{font-size:17px;margin-bottom:2px;font-weight:700;}
+  .user-data p{font-size:14px;opacity:0.8;}
+  .qr-section{background:#fff;border-radius:18px;box-shadow:0 8px 18px rgba(0,0,0,0.1);margin:30px auto;max-width:380px;padding:24px;text-align:center;}
+  .qr-section h2{margin-bottom:14px;color:var(--dark);}
+  .qr-section p{font-size:15px;margin-bottom:18px;color:#444;}
+  .scan-btn{width:100%;padding:12px 0;background:var(--grad-end);color:var(--dark);font-weight:600;border:none;border-radius:12px;cursor:pointer;font-size:16px;}
+  footer{position:fixed;bottom:10px;left:50%;transform:translateX(-50%);background:var(--dark);border-radius:30px;display:flex;justify-content:space-around;align-items:center;width:92%;max-width:420px;padding:10px;box-shadow:0 10px 25px rgba(0,0,0,0.2);}
+  footer a{color:var(--grad-end);font-size:22px;text-decoration:none;}
+  footer a.active {color:#fff;}
+  .plus-btn {width:60px;height:60px;border-radius:50%;background:#fff;color:var(--dark);border:none;font-size:26px;transform:translateY(-20px);box-shadow:0 6px 18px rgba(0,0,0,0.2);cursor:pointer;}
 </style>
 </head>
 <body>
+<div class="app-container">
+  <header>
+    <div class="header-left">
+      <img src="img/Recurso 3@4x.png" alt="BancoFintech" class="logo">
+      <div class="user-data">
+        <h3>Escanear QR</h3>
+        <p>BancoFintech Seguro</p>
+      </div>
+    </div>
+    <div class="header-right">
+      <a href="#"><i class="fa-solid fa-qrcode"></i></a>
+    </div>
+  </header>
 
-<h2>Escanea para pagar</h2>
-<div id="qrcode"></div>
+  <section class="qr-section">
+    <h2>Escanear código QR</h2>
+    <p>Apunta la cámara hacia el código QR del comercio para procesar tu pago de forma rápida y segura.</p>
+    <button class="scan-btn" onclick="simularEscaneo()">
+      <i class="fa-solid fa-qrcode"></i> Escanear QR
+    </button>
+  </section>
+</div>
 
+<!-- FOOTER -->
 <footer>
   <a href="home.html"><i class="fa-solid fa-house"></i></a>
   <a href="chat.html"><i class="fa-solid fa-comment-dots"></i></a>
-  <button class="plus-btn" onclick="window.location='mas.html'"><i class="fa-solid fa-plus"></i></button>
-  <a href="qr.html"><i class="fa-solid fa-qrcode"></i></a>
+  <button id="plusBtn" class="plus-btn" title="Nueva Transferencia" onclick="window.location='mas.html'">
+    <i class="fa-solid fa-plus"></i>
+  </button>
+  <a href="qr.html" class="active"><i class="fa-solid fa-qrcode"></i></a>
   <a href="configuracion.html"><i class="fa-solid fa-gear"></i></a>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
-  // URL de pago que solo se abre al escanear el QR
-  const paymentUrl = "pago.html?id=123456&monto=50.00";
-
-  new QRCode(document.getElementById("qrcode"), {
-    text: paymentUrl,
-    width: 200,
-    height: 200
-  });
+  // Simulación del escaneo QR
+  function simularEscaneo() {
+    const id = "TRX" + Math.floor(Math.random() * 1000000);
+    const monto = (Math.random() * 100 + 1).toFixed(2); // monto aleatorio
+    alert("QR detectado correctamente.\nRedirigiendo a pago...");
+    window.location = `pago.html?id=${id}&monto=${monto}`;
+  }
 </script>
-
 </body>
 </html>
