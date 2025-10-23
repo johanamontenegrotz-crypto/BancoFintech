@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BancoFintech · Más</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap" rel="stylesheet">
+
+  <style>
+  :root {
+    --grad-start: #00a88f;
+    --grad-end: #ffea00;
+    --dark: #13313a;
+    --card: rgba(255,255,255,0.95);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;font-family:"Poppins",sans-serif;}
+  html,body{
+    height:100%;
+    background: linear-gradient(to bottom right, #00a88f, #ffea00);
+    background-attachment: fixed;
+  }
+
+  .app-container {
+    max-width:420px;
+    margin:auto;
+    position:relative;
+    padding-bottom:100px;
+    min-height:100vh;
+  }
+
+  header {
+    background:#ffea00;
+    color:var(--dark);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:14px 18px;
+    border-radius:0 0 22px 22px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.15);
+  }
+
+  .header-left {
+    display:flex;
+    align-items:center;
+    gap:10px;
+    cursor:pointer;
+  }
+  .logo {
+    width:60px;
+    height:60px;
+    object-fit:contain;
+  }
+
+  h2{
+    text-align:center;
+    margin:20px 0;
+    color:var(--dark);
+    font-weight:700;
+  }
+
+  .options-list{
+    max-width:380px;
+    margin:auto;
+    padding:10px;
+  }
+
+  .option-item{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    background:var(--card);
+    padding:14px 16px;
+    margin-bottom:12px;
+    border-radius:12px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.1);
+    cursor:pointer;
+    transition:0.3s;
+  }
+  .option-item:hover{background:#fff;}
+  .option-item i{
+    font-size:22px;
+    color:var(--grad-end);
+    width:40px;
+    height:40px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    background:var(--dark);
+    color:#fff;
+  }
+  .option-item span{font-weight:600;color:var(--dark);font-size:15px;}
+
+  /* FOOTER */
+  footer {
+    position:fixed;
+    bottom:10px;
+    left:50%;
+    transform:translateX(-50%);
+    background:var(--dark);
+    border-radius:30px;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    width:92%;
+    max-width:420px;
+    padding:10px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+  }
+  footer a {
+    color:var(--grad-end);
+    font-size:22px;
+    text-decoration:none;
+  }
+  footer a.active {color:#fff;}
+  .plus-btn {
+    width:60px;height:60px;border-radius:50%;
+    background:#fff;color:var(--dark);
+    border:none;font-size:26px;
+    transform:translateY(-20px);
+    box-shadow:0 6px 18px rgba(0,0,0,0.2);
+    cursor:pointer;
+  }
+  </style>
+</head>
+
+<body>
+<div class="app-container">
+  <!-- HEADER -->
+  <header>
+    <div class="header-left" onclick="window.location='home.html'">
+      <img src="img/4x/Recurso 3@4x.png" alt="BancoFintech" class="logo">
+      <div class="user-data">
+        <h3>Más opciones</h3>
+        <p>BancoFintech</p>
+      </div>
+    </div>
+  </header>
+
+  <h2>Crear / Agregar</h2>
+
+  <div class="options-list">
+    <div class="option-item" onclick="alert('Agregar nueva cuenta')">
+      <i class="fa-solid fa-wallet"></i>
+      <span>Agregar una cuenta</span>
+    </div>
+
+    <div class="option-item" onclick="alert('Realizar un pago nuevo')">
+      <i class="fa-solid fa-money-bill-transfer"></i>
+      <span>Realizar un pago nuevo</span>
+    </div>
+
+    <div class="option-item" onclick="alert('Enviar dinero a un contacto nuevo')">
+      <i class="fa-solid fa-user-plus"></i>
+      <span>Enviar dinero a un contacto nuevo</span>
+    </div>
+
+    <div class="option-item" onclick="alert('Registrar un nuevo beneficiario')">
+      <i class="fa-solid fa-address-book"></i>
+      <span>Registrar un nuevo beneficiario</span>
+    </div>
+
+    <div class="option-item" onclick="alert('Más opciones')">
+      <i class="fa-solid fa-ellipsis"></i>
+      <span>Más opciones</span>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <a href="home.html"><i class="fa-solid fa-house"></i></a>
+  <a href="chat.html"><i class="fa-solid fa-comment-dots"></i></a>
+  <button id="plusBtn" class="plus-btn" onclick="alert('Crear algo nuevo')"><i class="fa-solid fa-plus"></i></button>
+  <a href="qr.html"><i class="fa-solid fa-qrcode"></i></a>
+  <a href="configuracion.html"><i class="fa-solid fa-gear"></i></a>
+</footer>
+
+</body>
+</html>
