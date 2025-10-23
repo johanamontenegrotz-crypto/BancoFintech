@@ -6,10 +6,10 @@
   <title>BancoFintech · Login</title>
   <style>
     :root {
-      --grad-start: #ffd400; /* amarillo principal */
-      --grad-end: #00b089;   /* verde secundario */
-      --dark: #13313a;       /* azul oscuro */
-      --muted: #6b7a7f;      /* gris texto */
+      --grad-start: #ffd400;
+      --grad-end: #00b089;
+      --dark: #13313a;
+      --muted: #6b7a7f;
     }
 
     body {
@@ -35,17 +35,8 @@
       width: 170px;
       height: 170px;
       object-fit: contain;
+      border-radius: 16px;
       margin-bottom: 10px;
-    }
-
-    h2.brand {
-      font-size: 22px;
-      font-weight: 700;
-      margin-bottom: 20px;
-      color: var(--dark);
-    }
-    h2.brand span {
-      font-weight: 300;
     }
 
     .form input {
@@ -100,9 +91,8 @@
 
 <div class="card">
   <img src="img/Recurso 5@4x.png" alt="Logo BancoFintech" class="logo-img">
-  
-  <!-- FORMULARIO CORREGIDO -->
-  <form class="form" action="home.html" method="get">
+
+  <form class="form" id="loginForm">
     <input type="text" placeholder="Usuario" required>
     <input type="password" placeholder="Contraseña" required>
     <button class="btn btn-primary" type="submit">Iniciar Sesión</button>
@@ -110,6 +100,16 @@
 
   <p class="small-note">¿No tienes cuenta? <a href="register.html">Regístrate aquí</a></p>
 </div>
+
+<script>
+  // Solo interceptamos el submit del login
+  document.getElementById('loginForm').addEventListener('submit', function(e){
+    e.preventDefault(); // evita buscar home.html
+    alert("¡Login exitoso!");
+    // Redirige si quieres
+    // window.location.href = "index.html";
+  });
+</script>
 
 </body>
 </html>
