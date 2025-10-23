@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BancoFintech · Login</title>
+  <style>
+    :root {
+      --grad-start: #ffd400; /* amarillo principal */
+      --grad-end: #00b089;   /* verde secundario */
+      --dark: #13313a;       /* azul oscuro */
+      --muted: #6b7a7f;      /* gris texto */
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(180deg, var(--grad-start) 0%, #f7f6a2 20%, #b9f0d4 45%, var(--grad-end) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.96);
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      text-align: center;
+      width: 320px;
+    }
+
+    .logo-img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      border-radius: 16px;
+      margin-bottom: 10px;
+    }
+
+    h2.brand {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--dark);
+    }
+    h2.brand span {
+      font-weight: 300;
+    }
+
+    .form input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      outline: none;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 14px;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: 700;
+      transition: 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--grad-start);
+      color: #082;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+    }
+    .btn-primary:hover {
+      background: #eec800;
+    }
+
+    .small-note {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 15px;
+    }
+
+    .small-note a {
+      color: var(--dark);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .small-note a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <img src="img/4x/Recurso 5@4x.png" alt="Logo BancoFintech" 
+       class="logo-img" 
+       style="width:170px; height:170px; object-fit:contain; margin-bottom:0px;">
+  
+  <form class="form" action="home.html" method="post">
+    <input type="text" placeholder="Usuario" required>
+    <input type="password" placeholder="Contraseña" required>
+    <button class="btn btn-primary" type="submit">Iniciar Sesión</button>
+  </form>
+
+  <p class="small-note">¿No tienes cuenta? <a href="register.html">Regístrate aquí</a></p>
+</div>
+
+
+</body>
+</html>
