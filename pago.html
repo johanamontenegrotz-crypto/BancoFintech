@@ -33,7 +33,114 @@
 <div class="app-container">
   <header>
     <div class="header-left">
-      <img src="img/4x/Recurso 3@4x.png" alt="BancoFintech" class="logo">
+      <img src="img/Recurso 3@4x.png" alt="BancoFintech" class="logo">
+      <div class="user-data">
+        <h3>Pagar con QR</h3>
+        <p>BancoFintech Seguro</p>
+      </div>
+    </div>
+    <div class="header-right">
+      <a href="#"><i class="fa-solid fa-qrcode"></i></a>
+    </div>
+  </header>
+
+  <section class="payment-section">
+    <h2>Detalle de Pago</h2>
+    <div class="payment-details">
+      <p><strong>Comercio:</strong> Tienda ABC</p>
+      <p><strong>Monto:</strong> S/ <span id="amount">0.00</span></p>
+      <p><strong>ID Transacción:</strong> <span id="transactionId">-</span></p>
+    </div>
+    <button class="btn-pay" id="payButton"><i class="fa-solid fa-lock"></i> Confirmar Pago</button>
+  </section>
+
+  <!-- SOPORTE -->
+  <section class="support">
+    <h3>Soporte del Banco</h3>
+    <p>¿Tienes algún problema? Habla directamente con un asesor por chat.</p>
+    <button id="openChat"><i class="fa-solid fa-comments"></i> Abrir chat</button>
+  </section>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <a href="home.html"><i class="fa-solid fa-house"></i></a>
+  <a href="chat.html"><i class="fa-solid fa-comment-dots"></i></a>
+  <button id="plusBtn" class="plus-btn" title="Nueva Transferencia" onclick="window.location='mas.html'">
+    <i class="fa-solid fa-plus"></i>
+  </button>
+  <a href="qr.html"><i class="fa-solid fa-qrcode"></i></a>
+  <a href="configuracion.html"><i class="fa-solid fa-gear"></i></a>
+</footer>
+
+<script>
+  // Manejo seguro de botones (evita errores si elemento no existe)
+  const openChatBtn = document.getElementById('openChat');
+  if (openChatBtn) {
+    openChatBtn.addEventListener('click', () => {
+      alert('Conectando con un asesor del BancoFintech...');
+    });
+  }
+
+  // Leer parámetros de URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const transactionId = urlParams.get('id') || '000000';
+  const amount = urlParams.get('monto') || '0.00';
+
+  // Mostrar datos en la página (comprobando elementos)
+  const txElem = document.getElementById('transactionId');
+  const amtElem = document.getElementById('amount');
+  if (txElem) txElem.textContent = transactionId;
+  if (amtElem) amtElem.textContent = amount;
+
+  // Botón de pago simulado (con comprobación)
+  const payBtn = document.getElementById('payButton');
+  if (payBtn) {
+    payBtn.addEventListener('click', () => {
+      alert(`Pago realizado con éxito.\nID Transacción: ${transactionId}\nMonto: S/ ${amount}\nGracias por usar BancoFintech.`);
+      window.location = 'home.html';
+    });
+  }
+</script>
+</body>
+</html>
+
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BancoFintech · Pago</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {--grad-start:#00a88f;--grad-end:#ffea00;--dark:#13313a;}
+  *{margin:0;padding:0;box-sizing:border-box;font-family:"Poppins",sans-serif;}
+  html,body{height:100%;background: linear-gradient(to bottom right, #00a88f, #ffea00);}
+  .app-container{max-width:420px;margin:auto;padding-bottom:100px;min-height:100vh;position:relative;}
+  header{background:#ffea00;color:var(--dark);display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-radius:0 0 22px 22px;box-shadow:0 8px 25px rgba(0,0,0,0.15);}
+  .header-left{display:flex;align-items:center;gap:10px;}
+  .logo{width:60px;height:60px;object-fit:contain;}
+  .user-data h3{font-size:17px;margin-bottom:2px;font-weight:700;}
+  .user-data p{font-size:14px;opacity:0.8;}
+  .payment-section{background:#fff;border-radius:18px;box-shadow:0 8px 18px rgba(0,0,0,0.1);margin:30px auto;max-width:380px;padding:24px;text-align:center;}
+  .payment-details{text-align:left;margin:16px 0;font-size:16px;}
+  .payment-details p{margin-bottom:8px;}
+  .btn-pay{width:100%;padding:12px 0;background:var(--grad-end);color:var(--dark);font-weight:600;border:none;border-radius:12px;cursor:pointer;font-size:16px;}
+  .support{background:var(--dark);color:#fff;padding:18px;border-radius:18px;max-width:380px;margin:0 auto;text-align:center;box-shadow:0 8px 20px rgba(0,0,0,0.2);}
+  .support h3 {margin-bottom:8px;}
+  .support p {font-size:14px;margin-bottom:10px;}
+  footer{position:fixed;bottom:10px;left:50%;transform:translateX(-50%);background:var(--dark);border-radius:30px;display:flex;justify-content:space-around;align-items:center;width:92%;max-width:420px;padding:10px;box-shadow:0 10px 25px rgba(0,0,0,0.2);}
+  footer a{color:var(--grad-end);font-size:22px;text-decoration:none;}
+  footer a.active {color:#fff;}
+  .plus-btn {width:60px;height:60px;border-radius:50%;background:#fff;color:var(--dark);border:none;font-size:26px;transform:translateY(-20px);box-shadow:0 6px 18px rgba(0,0,0,0.2);cursor:pointer;}
+</style>
+</head>
+<body>
+<div class="app-container">
+  <header>
+    <div class="header-left">
+      <img src="BancoFintech/img/Recurso 3@4x.png" alt="BancoFintech" class="logo">
       <div class="user-data">
         <h3>Pagar con QR</h3>
         <p>BancoFintech Seguro</p>
