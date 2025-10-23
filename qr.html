@@ -27,6 +27,30 @@
   footer a{color:var(--grad-end);font-size:22px;text-decoration:none;}
   footer a.active {color:#fff;}
   .plus-btn {width:60px;height:60px;border-radius:50%;background:#fff;color:var(--dark);border:none;font-size:26px;transform:translateY(-20px);box-shadow:0 6px 18px rgba(0,0,0,0.2);cursor:pointer;}
+  /* --- NUEVO: Imagen QR central --- */
+  .qr-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+    max-width: 380px;
+    padding: 24px;
+    text-align: center;
+  }
+  .qr-container img {
+    width: 220px;
+    height: 220px;
+    object-fit: contain;
+    margin-bottom: 20px;
+  }
+  .qr-container h2 {
+    color: var(--dark);
+    margin-bottom: 8px;
+  }
 </style>
 </head>
 <body>
@@ -35,7 +59,7 @@
     <div class="header-left">
       <img src="img/4x/Recurso 3@4x.png" alt="BancoFintech" class="logo">
       <div class="user-data">
-        <h3>Pagar con QR</h3>
+        <h3>Escanear QR</h3>
         <p>BancoFintech Seguro</p>
       </div>
     </div>
@@ -44,14 +68,11 @@
     </div>
   </header>
 
-  <section class="payment-section">
-    <h2>Detalle de Pago</h2>
-    <div class="payment-details">
-      <p><strong>Comercio:</strong> Tienda ABC</p>
-      <p><strong>Monto:</strong> S/ <span id="amount">0.00</span></p>
-      <p><strong>ID Transacción:</strong> <span id="transactionId">-</span></p>
-    </div>
-    <button class="btn-pay" id="payButton"><i class="fa-solid fa-lock"></i> Confirmar Pago</button>
+  <!-- Imagen del código QR -->
+  <section class="qr-container">
+    <h2>Tu código QR</h2>
+    <img src="img/qr-code-logo-png_seeklogo-217342.png" alt="Código QR BancoFintech">
+    <p style="font-size:14px;color:#555;">Escanea este código para pagar de forma rápida y segura.</p>
   </section>
 
   <!-- SOPORTE -->
@@ -69,36 +90,15 @@
   <button id="plusBtn" class="plus-btn" title="Nueva Transferencia" onclick="window.location='mas.html'">
     <i class="fa-solid fa-plus"></i>
   </button>
-  <a href="qr.html"><i class="fa-solid fa-qrcode"></i></a>
+  <a href="qr.html" class="active"><i class="fa-solid fa-qrcode"></i></a>
   <a href="configuracion.html"><i class="fa-solid fa-gear"></i></a>
 </footer>
 
 <script>
-  // Manejo seguro de botones (evita errores si elemento no existe)
   const openChatBtn = document.getElementById('openChat');
   if (openChatBtn) {
     openChatBtn.addEventListener('click', () => {
       alert('Conectando con un asesor del BancoFintech...');
-    });
-  }
-
-  // Leer parámetros de URL
-  const urlParams = new URLSearchParams(window.location.search);
-  const transactionId = urlParams.get('id') || '000000';
-  const amount = urlParams.get('monto') || '0.00';
-
-  // Mostrar datos en la página (comprobando elementos)
-  const txElem = document.getElementById('transactionId');
-  const amtElem = document.getElementById('amount');
-  if (txElem) txElem.textContent = transactionId;
-  if (amtElem) amtElem.textContent = amount;
-
-  // Botón de pago simulado (con comprobación)
-  const payBtn = document.getElementById('payButton');
-  if (payBtn) {
-    payBtn.addEventListener('click', () => {
-      alert(`Pago realizado con éxito.\nID Transacción: ${transactionId}\nMonto: S/ ${amount}\nGracias por usar BancoFintech.`);
-      window.location = 'home.html';
     });
   }
 </script>
